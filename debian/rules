@@ -1,4 +1,21 @@
 #!/usr/bin/make -f
 
+include /usr/share/dpkg/pkg-info.mk
+
+export DEB_VERSION_UPSTREAM
+export TREE_SITTER_SRC_DIR = /usr/src/tree-sitter/vimdoc/${DEB_VERSION_UPSTREAM}/
+
 %:
 	dh $@
+
+debian/%: debian/%.in
+	sed "s/@PARSER_VER@/$(DEB_VERSION_UPSTREAM)/g" $< > $@
+
+override_dh_auto_build:
+	tree-sitter generate --no-bindings
+
+override_dh_install: debian/Makefile
+	dh_install
+
+override_dh_auto_test:
+	XDG_CACHE_HOME=$(CURDIR)/debian/.cache tree-sitter test

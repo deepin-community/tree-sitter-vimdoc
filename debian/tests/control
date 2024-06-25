@@ -1,0 +1,2 @@
+Tests: smoke
+Depends: tree-sitter-cli, tree-sitter-vimdoc-src

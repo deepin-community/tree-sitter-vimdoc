@@ -1,0 +1,18 @@
+PARSER_LANG = vimdoc
+BASE_SRC_DIR = /usr/src/tree-sitter/$(PARSER_LANG)/@PARSER_VER@/parser/src
+OBJ_DIR ?= $(CURDIR)/debian/.ts-parser-$(PARSER_LANG)
+SOURCES = $(BASE_SRC_DIR)/parser.c
+OBJECTS = $(patsubst $(BASE_SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SOURCES))
+CXXFLAGS += $(shell pkg-config --cflags tree-sitter) -fno-exceptions
+LDFLAGS += $(shell pkg-config --libs tree-sitter)
+
+all: $(OBJ_DIR)/$(PARSER_LANG).so
+
+$(OBJ_DIR):
+	mkdir -p $@
+
+$(OBJ_DIR)/%.o: $(BASE_SRC_DIR)/%.c $(OBJ_DIR)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIC -c -o $@ -xc $<
+
+$(OBJ_DIR)/$(PARSER_LANG).so: $(OBJECTS)
+	$(CXX) $(CPPFLAGS) $(LDFLAGS) -fPIC -shared -o $@ $^
