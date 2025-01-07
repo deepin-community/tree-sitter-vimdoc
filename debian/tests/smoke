@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/tree-sitter/lib"
+
+for dir in /usr/src/tree-sitter/vimdoc/*; do
+	ver=$(basename "$dir")
+	rm -f "$CACHE_DIR"/vimdoc.so
+
+	printf 'Testing vimdoc parser, version %s\n' "$ver"
+	make -f "${dir}/Makefile" OBJ_DIR="$CACHE_DIR"
+	tree-sitter test
+done
