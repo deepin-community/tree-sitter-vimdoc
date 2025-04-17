@@ -1,0 +1,35 @@
+Tests: smoke
+Depends: tree-sitter-cli, tree-sitter-vimdoc-src
+
+Test-Command: /usr/share/dh-rust/bin/cargo-auto-test tree-sitter-vimdoc 3.0.0 --all-targets --all-features
+Features:
+ test-name=librust-tree-sitter-vimdoc-dev:@,
+Depends:
+ dh-rust,
+ librust-cc-1+default-dev (>= 1.0.89),
+ librust-tree-sitter-0+default-dev (>= 0.21),
+ librust-tree-sitter-vimdoc-3.0-dev,
+Restrictions:
+ allow-stderr,
+
+Test-Command: /usr/share/dh-rust/bin/cargo-auto-test tree-sitter-vimdoc 3.0.0 --all-targets
+Features:
+ test-name=librust-tree-sitter-vimdoc-dev:default,
+Depends:
+ dh-rust,
+ librust-cc-1+default-dev (>= 1.0.89),
+ librust-tree-sitter-0+default-dev (>= 0.21),
+ librust-tree-sitter-vimdoc-3.0+default-dev,
+Restrictions:
+ allow-stderr,
+
+Test-Command: /usr/share/dh-rust/bin/cargo-auto-test tree-sitter-vimdoc 3.0.0 --all-targets --no-default-features
+Features:
+ test-name=librust-tree-sitter-vimdoc-dev:,
+Depends:
+ dh-rust,
+ librust-cc-1+default-dev (>= 1.0.89),
+ librust-tree-sitter-0+default-dev (>= 0.21),
+ librust-tree-sitter-vimdoc-3.0-dev,
+Restrictions:
+ allow-stderr,

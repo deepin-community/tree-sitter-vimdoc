@@ -1,0 +1,3 @@
+debian/Makefile ${env:TREE_SITTER_SRC_DIR}/
+src/parser.c ${env:TREE_SITTER_SRC_DIR}/parser/src/
+src/tree_sitter/*.h ${env:TREE_SITTER_SRC_DIR}/parser/src/tree_sitter/

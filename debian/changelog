@@ -1,5 +1,50 @@
-template-repository (1.0-1) unstable; urgency=medium
+tree-sitter-vimdoc (3.0.0-3deepin1) unstable; urgency=medium
 
-  * Initial release
+  * Fix tests: adapt expected to heading changes
+    https://github.com/neovim/tree-sitter-vimdoc/pull/140
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Cryolitia <liziyao@uniontech.com>  Thu, 17 Apr 2025 16:01:47 +0800
+
+tree-sitter-vimdoc (3.0.0-3) unstable; urgency=medium
+
+  * Add libc-dev and make to tree-sitter-vimdoc-src Depends
+  * Add cargo and rustc explicitly to Build-Depends
+
+ -- James McCoy <jamessan@debian.org>  Sun, 16 Mar 2025 22:25:14 -0400
+
+tree-sitter-vimdoc (3.0.0-2) unstable; urgency=medium
+
+  * Upload to unstable
+  * Add librust-cc-dev to Build-Depends
+  * Revert "Switch branch to debian/experimental"
+  * Declare compliance with Policy 4.7.2, no changes needed
+
+ -- James McCoy <jamessan@debian.org>  Sat, 08 Mar 2025 14:46:18 -0500
+
+tree-sitter-vimdoc (3.0.0-1) experimental; urgency=medium
+
+  * New upstream release
+  * Switch pkg-config Depends to pkgconf
+  * Adapt shared object build from C++ to C
+  * Include src/tree_sitter/ in the package
+  * Add salsa-ci.yml config
+  * Switch branch to debian/experimental
+  * Bump minimum version of tree-sitter (Build-)Depends to 0.21
+  * Add librust-tree-sitter-vimdoc-dev package
+  * d/clean: Add trailing slash to debian/.cache/ (Closes: #1061223)
+
+ -- James McCoy <jamessan@debian.org>  Wed, 25 Dec 2024 16:38:06 -0500
+
+tree-sitter-vimdoc (2.0.0-2) unstable; urgency=medium
+
+  * Upload to unstable
+  * d/copyright: Add stanza for src/tree_sitter
+  * Add comment about provenance of src/tree_sitter/parser.h
+
+ -- James McCoy <jamessan@debian.org>  Thu, 25 Jan 2024 08:01:20 -0500
+
+tree-sitter-vimdoc (2.0.0-1) experimental; urgency=medium
+
+  * Initial debianization. (Closes: #1052202)
+
+ -- James McCoy <jamessan@debian.org>  Sun, 08 Oct 2023 22:06:11 -0400
